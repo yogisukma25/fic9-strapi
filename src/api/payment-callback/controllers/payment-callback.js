@@ -8,6 +8,7 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::payment-callback.payment-callback', ({ strapi }) => ({
     async create(ctx) {
+        // @ts-ignore
         let requestData = ctx.request.body;
         console.log('data', requestData);
         let order = await strapi.service('api::order.order').findOne(parseInt(requestData.external_id));
